@@ -84,6 +84,9 @@ por exemplo, execute o comando:
 `docker exec -it id_do_container bash` em um container ubuntu para acessar o terminal de forma interativa
 
 
+** Exibindo logs do Container**
+`docker logs <Nome ou ID>`
+
 ### CONFIGURANDO PORTAS
 
 **Mostrar o mapeamento de portas do container**
