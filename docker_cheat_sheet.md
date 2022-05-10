@@ -144,6 +144,12 @@ atribui uma porta especifica do host para uma porta do container
 
 `sudo docker build -t <nome_da_imagen> . # sinaliza que o arquivo Dockerfile esta no mesmo local`
 
+Por padrão o docker vai procurar o arquivo chamado Dockerfile para realizar o build
+
+Para utilizar algum outro arquivo com outro nome você precisa passar o parâmetro -f
+
+`sudo docker build -t <nome_da_imagens> -f Dockerfiler-outro-nome`
+
 
 ### PERSISTINDO DADOS
 
