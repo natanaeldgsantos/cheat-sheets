@@ -82,6 +82,7 @@ dica: para executar o container em background sem travar o terminado use o coman
 por exemplo, execute o comando:
 
 `docker exec -it id_do_container bash` em um container ubuntu para acessar o terminal de forma interativa
+outro exemplo: doccker exec -it <NOME ou ID> /bin/bash
 
 
 ** Exibindo logs do Container**
