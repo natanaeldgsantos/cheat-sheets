@@ -62,7 +62,7 @@ dica: para executar o container em background sem travar o terminado use o coman
 **Reativando o container pausado**
 	
 
-`docker unpause id_do_container
+`docker unpause id_do_container`
 
 **Removendo o container**
 	
