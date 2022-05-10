@@ -140,6 +140,11 @@ atribui uma porta especifica do host para uma porta do container
 		# Gerar uma imagens a partir de um Dockerfile
 		docker build -t nome_da_imagen/app-node:1.0 .
 
+**Constroi a nova Imagen**
+
+`sudo docker build -t <nome_da_imagen> . # sinaliza que o arquivo Dockerfile esta no mesmo local`
+
+
 ### PERSISTINDO DADOS
 
 **Bind Mounts - permitir que a aplicar no docker escreve em alguma psta do Host**
