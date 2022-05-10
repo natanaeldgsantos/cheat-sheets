@@ -151,9 +151,9 @@ Para utilizar algum outro arquivo com outro nome você precisa passar o parâmet
 `sudo docker build -t <nome_da_imagens> -f Dockerfiler-outro-nome`
 
 
-### PERSISTINDO DADOS
+### PERSISTINDO DADOS OU VOLUMES
 
-**Bind Mounts - permitir que a aplicar no docker escreve em alguma psta do Host**
+**Bind Mounts - ao rodar um docker escreve em alguma pasta do Host**
 **Volume - criar espaço reservado para armazenamento**
 
 		# Bind Mounts
