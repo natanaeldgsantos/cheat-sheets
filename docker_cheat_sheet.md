@@ -90,6 +90,7 @@ outro exemplo:
 
 
 ** Exibindo logs do Container**
+	
 `docker logs <Nome ou ID>`
 
 ### CONFIGURANDO PORTAS
