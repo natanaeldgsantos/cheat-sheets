@@ -89,7 +89,7 @@ outro exemplo:
 `doccker exec -it <NOME ou ID> /bin/bash`
 
 
-** Exibindo logs do Container**
+**Exibindo logs do Container**
 	
 `docker logs <Nome ou ID>`
 
