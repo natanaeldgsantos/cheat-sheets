@@ -172,6 +172,18 @@ Para utilizar algum outro arquivo com outro nome você precisa passar o parâmet
 			docker run -it -v nome_volume:/app ubuntu bash
 			docker run --mount source=nome_volume, target =/app ubuntu bash
 
+
+**Subindo um novo servidor MySQL de Exemplo**
+
+Subindo um container com MySQL
+
+`sudo docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql:5.7`
+
+Subindo um container com servidor MySQL e atribuindo um Volume para persistência de dados
+
+`sudo docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -v ${PWD}/volume/mysql:/var/lib/mysql mysql:5.7`
+
+
 ### COMUNICAÇÃO E REDES
 
 	# 3 opções de rede 
