@@ -183,6 +183,8 @@ Subindo um container com servidor MySQL e atribuindo um Volume para persistênci
 
 `sudo docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -v ${PWD}/volume/mysql:/var/lib/mysql mysql:5.7`
 
+Ao mapear a pasta de configurações do MySQL como acima, mesmo que o container seja deletado, não serão perdidas as tabelas e bancos.
+
 
 ### COMUNICAÇÃO E REDES
 
