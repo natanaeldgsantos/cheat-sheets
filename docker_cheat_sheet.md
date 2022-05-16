@@ -196,6 +196,9 @@ Ao mapear a pasta de configurações do MySQL como acima, mesmo que o container 
 
 	# Inspecionando detalher de um container
 	docker inspect id_do_container	
+	
+	**Consultando o endereço IP do container**
+	``sudo docker inspect <nome do container> | grep IPAddress`
 
 	#Criar própria rede
 	docker network create --driver bridge nome_rede
