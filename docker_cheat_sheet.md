@@ -193,24 +193,17 @@ Subindo um container com servidor MySQL e atribuindo um Volume para persistênci
 
 Ao mapear a pasta de configurações do MySQL como acima, mesmo que o container seja deletado, não serão perdidas as tabelas e bancos.
 
+**Deletando Volumes**
 
-### DOCKER COMPOSE - Coordenação de Containers
+Quando criamos uma imagem através de um Dockerfille é possível criar um volume a ser utilizado dentro do container 
 
-	# Instalando docker compose no linux. 
-	--referência: https://docs.docker.com/compose/install/
+	FROM postres:13
+	ENV POSTGRES_USER=root POSTGRES_PASSWORD=root POSTGRESS_DB=ny_taxi
+	VOLUME /my_data
 
+Entretando ao se especificar o volume dentro do Dockerfile não é possível indicar o local do respositorio na máquina host. por padrão o repositorio host será sempre gravado em: ´/var/lib/docker/volumes´
 
-	# Crie o arquivo docker-compose.yml
-	# para executar o arquivo va até o diretório do mesmo e execute:
-	docker-compose up
+Para deletar também os volumes associados ao deletar o container use:
 
-	# lista servicos criados com docker-compose
-	docker-compose ps 
-
-	# encerrar servicos criados com docker-compose
-	docker-compose down
-
-
-
-
+`sudo docker rm -v <nome ou id do container>`
 
