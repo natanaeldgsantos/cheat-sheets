@@ -195,15 +195,17 @@ Ao mapear a pasta de configurações do MySQL como acima, mesmo que o container 
 
 **Deletando Volumes**
 
-Quando criamos uma imagem através de um Dockerfille é possível criar um volume a ser utilizado dentro do container 
+Ao criar uma nova imagem através de um Dockerfille é possível especificar e criar um volume dentro do container.
 
 	FROM postgres:13
 	ENV POSTGRES_USER=root POSTGRES_PASSWORD=root POSTGRESS_DB=ny_taxi
 	VOLUME /my_data
 
-Entretando ao se especificar o volume dentro do Dockerfile não é possível indicar o local do respositorio na máquina host. por padrão o repositorio host será sempre gravado em: ´/var/lib/docker/volumes´
+No exemplo acima estamos criando um repositório chamados /my_data dentro do container. 
+Entretando ao se especificar o volume no Dockerfile não é possível indicar um repositorio espelho na máquina host. 
+Por padrão o repositorio host será sempre gravado em:  `/var/lib/docker/volumes`
 
-Para deletar também os volumes associados ao deletar o container use:
+Para deletar o volumes associado a um container use:
 
 `sudo docker rm -v <nome ou id do container>`
 
