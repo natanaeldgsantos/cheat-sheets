@@ -207,3 +207,15 @@ Para deletar também os volumes associados ao deletar o container use:
 
 `sudo docker rm -v <nome ou id do container>`
 
+**Lista Volumes**
+
+`sudo docker volume ls`
+
+**Remove um ou mais volumes**
+
+`sudo docker volume rm <nome ou id do volume>`
+
+**Remove todos os volumes sem utilização (Atenção)**
+
+´sudo docker volume prune´
+
