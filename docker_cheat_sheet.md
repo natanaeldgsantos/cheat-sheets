@@ -34,7 +34,11 @@ https://docs.docker.com/engine/install/ubuntu/
 
 **Descreve a Imagen**
 
-`docker inspect id_da_imagen`
+`docker inspect <nome ou id da imagem>`
+
+**Usando comandos bash para filtrar o detalhamento da imagen**
+
+`sudo docker inspect <nome ou id da imagen> | grep "ENV" # termo de busca, por exemplo variáveis de ambiente Env`
 
 **Detalha as camadas da Imagen**
 
