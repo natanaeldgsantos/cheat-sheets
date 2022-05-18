@@ -219,5 +219,5 @@ Para deletar o volumes associado a um container use:
 
 **Remove todos os volumes sem utilização (Atenção)**
 
-´sudo docker volume prune´
+`sudo docker volume prune`
 
