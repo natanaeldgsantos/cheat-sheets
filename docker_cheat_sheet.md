@@ -1,6 +1,6 @@
 # DOCKER CHEAT SHEET
 
-### INSTALAÇÃO E CONFIGURAÇÃO DO AMBIENTE
+## INSTALAÇÃO E CONFIGURAÇÃO DO AMBIENTE
 
 
 **Como instalar Docker no Ubuntu**
@@ -16,21 +16,49 @@ https://docs.docker.com/engine/install/ubuntu/
 `sudo usermod -aG docker $USER`
 
 
-### Baixando e Executando Imagens
+## IMAGENS
 
 **Realiza o download de uma imagen direto do Docker Hub**
 
 `docker pull nome_da_imagen #(exemplo docker pull ubuntu)`
 
+**Cria sua própria imagem com base em um Dockerfile**
+
+`sudo docker build -t <nome da imagen> .` # o ponto significa que o build deve considar um Dockerfile que está na mesma pasta.
+
+`sudo docker build -t <nome da imagen> -f <caminho até Dockerfile desejado>` # executa qualquer outro Dockerfile específico
+
+**Lista todas as imagens locais**
+
+`sudo docker images`
+
+**Descreve a Imagen**
+
+`docker inspect id_da_imagen`
+
+**Detalha as camadas da Imagen**
+
+`docker history id_da_imagen`
+
+**Deletando uma imagen**
+
+`sudo docker rmi <nome ou id da imagem>`
+
+**Deletando todas as imagens locais de uma vez**
+
+`sudo docker rmi -f $(sudo docker images -aq)`
+
+## CONTAINERS
+
 **Executa um container**
 
 Se existir localmente executa, senão realiza o download, valida e executa
 
-`docker run nome_da_imagen`
+`docker run --name <nome do container> <nome da imagem>`
 
 dica: para executar o container em background sem travar o terminado use o comando -d, exemplo:
 
-`docker run -d nome_da_imagen`
+`docker run -d <nome da imagens>`
 
 **Lista todos os containers**
 
@@ -59,8 +87,7 @@ dica: para executar o container em background sem travar o terminado use o coman
 	
 `docker pause id_do_container`
 
-**Reativando o container pausado**
-	
+**Reativando o container pausado**	
 
 `docker unpause id_do_container`
 
@@ -88,12 +115,11 @@ outro exemplo:
 
 `doccker exec -it <NOME ou ID> /bin/bash`
 
-
 **Exibindo logs do Container**
 	
 `docker logs <Nome ou ID>`
 
-### CONFIGURANDO PORTAS
+## NETWORK
 
 **Mostrar o mapeamento de portas do container**
 	
@@ -109,49 +135,27 @@ Detecta portas do container e vincula portas do host automaticamente
 
 atribui uma porta especifica do host para uma porta do container
 
+### Configurando uma Network
 
-### IMAGENS
+	# 3 opções de rede 
+		--Bridge: 	- A rede bridge é usada para comunicar containers em um mesmo host;
+					- Redes bridges criadas manualmente permitem comunicação via hostname;
+		--Host: Conecta o container a mesma rede do host
+		--None: de forma explicita declara que container não estará conectado a nenhuma rede
+
+	# Inspecionando detalher de um container
+	docker inspect id_do_container	
 	
-**Lista todas as imagens baixadas**
+	**Consultando o endereço IP do container**
+	``sudo docker inspect <nome do container> | grep IPAddress`
 
-`docker images ls`
+	#Criar própria rede
+	docker network create --driver bridge nome_rede
 
-**Descreve a Imagen**
+	# Atribuindo um nome e nova rede ao container
+	docker run -it --name nome_container --network nome_rede ubuntu bash
 
-`docker inspect id_da_imagen`
-
-**Detalha as camadas da Imagen**
-
-`docker history id_da_imagen`
-
-**Criando uma nova imagen**
-
-	# DockerFile --> Imagen --> Container
-
-		# Crie um arquivo Dockerfile
-		# Dockerfile references: https://docs.docker.com/engine/reference/builder/
-
-			FROM node:14
-			WORKDIR /app-node
-			EXPOSE 3000 #opcional indica que a aplicação estará exposta, rodando na porta 3000 ou qualquer outra
-			COPY . . # copia todo contéudo do diretório atual para o node
-			RUN npm install
-			ENTRYPOINT npm start
-		# Gerar uma imagens a partir de um Dockerfile
-		docker build -t nome_da_imagen/app-node:1.0 .
-
-**Constroi a nova Imagen**
-
-`sudo docker build -t <nome_da_imagen> . # sinaliza que o arquivo Dockerfile esta no mesmo local`
-
-Por padrão o docker vai procurar o arquivo chamado Dockerfile para realizar o build
-
-Para utilizar algum outro arquivo com outro nome você precisa passar o parâmetro -f
-
-`sudo docker build -t <nome_da_imagens> -f Dockerfiler-outro-nome`
-
-
-### PERSISTINDO DADOS OU VOLUMES
+## VOLUMES
 
 **Bind Mounts - ao rodar um docker escreve em alguma pasta do Host**
 **Volume - criar espaço reservado para armazenamento**
@@ -186,26 +190,6 @@ Subindo um container com servidor MySQL e atribuindo um Volume para persistênci
 Ao mapear a pasta de configurações do MySQL como acima, mesmo que o container seja deletado, não serão perdidas as tabelas e bancos.
 
 
-### COMUNICAÇÃO E REDES
-
-	# 3 opções de rede 
-		--Bridge: 	- A rede bridge é usada para comunicar containers em um mesmo host;
-					- Redes bridges criadas manualmente permitem comunicação via hostname;
-		--Host: Conecta o container a mesma rede do host
-		--None: de forma explicita declara que container não estará conectado a nenhuma rede
-
-	# Inspecionando detalher de um container
-	docker inspect id_do_container	
-	
-	**Consultando o endereço IP do container**
-	``sudo docker inspect <nome do container> | grep IPAddress`
-
-	#Criar própria rede
-	docker network create --driver bridge nome_rede
-
-	# Atribuindo um nome e nova rede ao container
-	docker run -it --name nome_container --network nome_rede ubuntu bash
-
 ### DOCKER COMPOSE - Coordenação de Containers
 
 	# Instalando docker compose no linux. 
@@ -221,12 +205,6 @@ Ao mapear a pasta de configurações do MySQL como acima, mesmo que o container 
 
 	# encerrar servicos criados com docker-compose
 	docker-compose down
-
-
-
-
-
-
 
 
 
