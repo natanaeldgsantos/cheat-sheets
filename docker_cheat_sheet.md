@@ -197,7 +197,7 @@ Ao mapear a pasta de configurações do MySQL como acima, mesmo que o container 
 
 Quando criamos uma imagem através de um Dockerfille é possível criar um volume a ser utilizado dentro do container 
 
-	FROM postres:13
+	FROM postgres:13
 	ENV POSTGRES_USER=root POSTGRES_PASSWORD=root POSTGRESS_DB=ny_taxi
 	VOLUME /my_data
 
