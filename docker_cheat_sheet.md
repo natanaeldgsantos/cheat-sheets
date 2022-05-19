@@ -24,7 +24,7 @@ https://docs.docker.com/engine/install/ubuntu/
 
 **Cria sua própria imagem com base em um Dockerfile**
 
-`sudo docker build -t <nome da imagen> .` # o ponto significa que o build deve considar um Dockerfile que está na mesma pasta.
+`sudo docker build -t <nome da imagen> .` # o ponto significa que o build deve considerar um Dockerfile que está na mesma pasta.
 
 `sudo docker build -t <nome da imagen> -f <caminho até Dockerfile desejado>` # executa qualquer outro Dockerfile específico
 
@@ -75,7 +75,7 @@ dica: para executar o container em background sem travar o terminado use o coman
 **Docker Cheat Sheet Download**
 	https://www.docker.com/sites/default/files/d8/2019-09/docker-cheat-sheet.pdf
 
-**Como para a execução do container**
+**Como parar a execução do container**
 	
 `docker stop id_do_container`
 
